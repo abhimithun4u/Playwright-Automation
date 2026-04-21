@@ -43,12 +43,17 @@ export default defineConfig({
 
     // 🎥 Video record (fail hole save)
     video: 'retain-on-failure',
+    size: { width: 1280, height: 720 },
 
     // 🧠 Trace (debugging er jonno full steps record)
     trace: 'on-first-retry',
 
     // ⏳ Action timeout (optional)
     actionTimeout: 15000,
+
+    launchOptions: {
+    args: ['--disable-gpu']
+  }
   },
 
   // 🌍 Multiple browser support
