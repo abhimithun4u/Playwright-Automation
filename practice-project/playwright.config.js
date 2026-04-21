@@ -64,7 +64,7 @@ export default defineConfig({
     // 👉 Beginner hole sudhu chromium rakhte paro
     // niche gula optional
 
-    {
+  /*   {
       name: 'firefox',
       use: {
         ...devices['Desktop Firefox'],
@@ -76,7 +76,7 @@ export default defineConfig({
       use: {
         ...devices['Desktop Safari'],
       },
-    },
+    }, */
   ],
 
 });

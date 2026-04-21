@@ -142,3 +142,11 @@ test('Login test', async ({ page }) => {
   await expect(page.locator('#flash')).toContainText('secure area');
 
 });
+
+/* page.getByRole()
+page.getByText()
+page.getByLabel()
+page.getByPlaceholder()
+page.getByAltText()
+page.getByTitle()
+page.getByTestId() */
