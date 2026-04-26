@@ -3,85 +3,53 @@ import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
 
-  // 📂 Test files kothay ache
   testDir: './tests',
-
-  // ⚡ Parallel execution (multiple test ek sathe run)
   fullyParallel: true,
-
-  // ❌ CI te jodi test.only thake tahole fail korbe
   forbidOnly: !!process.env.CI,
-
-  // 🔁 Retry (CI te 2 bar retry, local e 0)
   retries: process.env.CI ? 2 : 0,
-
-  // 🧵 Worker (CI te ekta worker, local e default)
   workers: process.env.CI ? 1 : undefined,
 
-  // ⏱️ Full test timeout (1 min)
-  timeout: 60000,
-
-  // ⏱️ Expect (assertion) timeout
+  // ⏱️ Office app slow hole eta baro
+  timeout: 90000,
   expect: {
-    timeout: 10000,
+    timeout: 15000,
   },
 
-  // 📊 Report generate (HTML report best)
-  reporter: 'html',
+  // 📊 Double reporter — terminal + HTML duto
+  reporter: [
+    ['html'],
+    ['list']
+  ],
 
-  // 🌐 Global test settings (MOST IMPORTANT 🔥)
+  // 📁 Failure screenshots/videos ekhane jambe
+  outputDir: './test-results',
+
   use: {
+    // 🌍 Office app er URL ekhane dao
+    //baseURL: 'https://your-office-app.com',
 
-    // 🌍 Base URL (short URL use korte parbe)
-    //baseURL: 'https://the-internet.herokuapp.com',
-
-    // 👀 Browser visible (debugging er jonno helpful)
     headless: false,
-
-    // 📸 Screenshot only on failure
     screenshot: 'only-on-failure',
-
-    // 🎥 Video record (fail hole save)
     video: 'retain-on-failure',
-    size: { width: 1280, height: 720 },
-
-    // 🧠 Trace (debugging er jonno full steps record)
+    size: { width: 1920, height: 1080 },
     trace: 'on-first-retry',
+    actionTimeout: 20000,
 
-    // ⏳ Action timeout (optional)
-    actionTimeout: 15000,
+    // 🔐 Login session reuse
+    //storageState: 'auth.json',
 
     launchOptions: {
-    args: ['--disable-gpu']
-  }
+      args: ['--disable-gpu']
+    }
   },
 
-  // 🌍 Multiple browser support
   projects: [
-
     {
       name: 'chromium',
       use: {
         ...devices['Desktop Chrome'],
       },
     },
-
-    // 👉 Beginner hole sudhu chromium rakhte paro
-    // niche gula optional
-
-  /*   {
-      name: 'firefox',
-      use: {
-        ...devices['Desktop Firefox'],
-      },
-    },
-
-    {
-      name: 'webkit',
-      use: {
-        ...devices['Desktop Safari'],
-      },
-    }, */
   ],
 
 });
