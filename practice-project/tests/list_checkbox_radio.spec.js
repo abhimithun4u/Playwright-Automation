@@ -19,6 +19,7 @@ test('dropdown practice', async ({page})=>{
     await expect(page.locator('#country')).toHaveValue('IN');
 }) */
 
+/* // selection and dropdown practice for custom and old dropdowns
 import {test,expect} from '@playwright/test'
 test('Dropdown revision', async ({page})=>{
     await page.goto('https://demoqa.com/select-menu');
@@ -41,9 +42,42 @@ test('Dropdown revision', async ({page})=>{
 
     await page.locator('#cars').selectOption('volvo','audi');
     await expect(page.locator('#cars')).toHaveValues('volvo','audi');
+}) */
+
+/* // Practicing checkboxes
+import{test,expect} from '@playwright/test'
+test('Checkbox practice', async({page})=>{
+    await page.goto('https://the-internet.herokuapp.com/checkboxes');
+    await page.locator('input[type="checkbox"]').first().check();
+    await page.locator('input[type="checkbox"]').last().uncheck();
+    await expect(page.locator('input[type="checkbox"]').first()).toBeChecked();
+    await expect(page.locator('input[type="checkbox"]').last()).not.toBeChecked();
+}) */
+
+// handling and mangaing checkbox, if it is checked it should be unchecked
+/* import{test,expect} from '@playwright/test'
+test('Condition checkbox handling', async ({page})=>{
+    await page.goto('https://the-internet.herokuapp.com/checkboxes');
+    const checkbox = page.locator('input[type="checkbox"]');
+    if(await checkbox.first().isChecked())
+    {
+        await checkbox.first().uncheck();
+        await checkbox.last().check();
+    }
+    else
+    {
+        await checkbox.first().check();
+        await checkbox.last().uncheck();
+    }
+
+}) */
+
+//Handling radio buttons
+import{test,expect} from '@playwright/test'
+test('Handling radio buttons', async ({page})=>{
+    page.goto('https://demoqa.com/radio-button');
+    
 })
-
-
 
 
 
